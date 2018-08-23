@@ -1,4 +1,4 @@
-package core.patterns.structural;
+package core.patterns.structural.adapter;
 
 public interface Employee {
     String getId();
