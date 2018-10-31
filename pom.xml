@@ -17,6 +17,8 @@
     <modules>
         <module>patterns</module>
         <module>tdd-with-junit</module>
+        <module>java9</module>
+        <module>data-structures</module>
     </modules>
 
     <name>practice</name>
