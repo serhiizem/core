@@ -19,6 +19,7 @@
         <module>tdd-with-junit</module>
         <module>java9</module>
         <module>data-structures</module>
+        <module>algs</module>
     </modules>
 
     <name>practice</name>
