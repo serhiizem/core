@@ -19,7 +19,7 @@ public class Queue<T> implements Iterable<T> {
         return size == 0;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 

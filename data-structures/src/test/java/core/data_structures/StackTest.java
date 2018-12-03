@@ -17,9 +17,9 @@ public class StackTest {
 
     @Test
     public void shouldEnqueueElementToTheStack() {
-        Assertions.assertEquals(0, stack.getSize());
+        Assertions.assertEquals(0, stack.size());
         stack.push("Test item1");
-        Assertions.assertEquals(1, stack.getSize());
+        Assertions.assertEquals(1, stack.size());
     }
 
     @Test
@@ -32,13 +32,13 @@ public class StackTest {
         stack.push(testItem2);
         stack.push(testItem3);
 
-        Assertions.assertEquals(3, stack.getSize());
+        Assertions.assertEquals(3, stack.size());
 
         Assertions.assertEquals(testItem3, stack.pop());
         Assertions.assertEquals(testItem2, stack.pop());
         Assertions.assertEquals(testItem1, stack.pop());
 
-        Assertions.assertEquals(0, stack.getSize());
+        Assertions.assertEquals(0, stack.size());
     }
 
     @Test
