@@ -1,9 +1,9 @@
 package core.patterns.behavioral.visitor.with_visitor;
 
-public class WheelElement extends PartElement {
+public class WheelElement implements PartElement {
 
     @Override
-    void visit(Visitor visitor) {
+    public void visit(Visitor visitor) {
         visitor.visit(this);
     }
 }

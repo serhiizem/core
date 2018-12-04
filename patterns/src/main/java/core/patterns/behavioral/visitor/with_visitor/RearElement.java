@@ -1,9 +1,9 @@
 package core.patterns.behavioral.visitor.with_visitor;
 
-public class RearElement extends PartElement {
+public class RearElement implements PartElement {
 
     @Override
-    void visit(Visitor visitor) {
+    public void visit(Visitor visitor) {
         visitor.visit(this);
     }
 }

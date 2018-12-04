@@ -8,7 +8,13 @@ import static core.patterns.behavioral.visitor.without_visitor.Window.WINDOW_PRI
 
 public class PartShippingPriceVisitor implements Visitor {
 
+    private static final BigDecimal DISCOUNT = new BigDecimal("3.00");
+
     private BigDecimal total = BigDecimal.ZERO;
+
+    public BigDecimal getTotalPrice() {
+        return total;
+    }
 
     @Override
     public void visit(RearElement rear) {
@@ -30,7 +36,10 @@ public class PartShippingPriceVisitor implements Visitor {
 
     @Override
     public void visit(PartOrderElement order) {
-        System.out.println("Assembling the whole order");
-
+        if (order.getParts().size() >= 3) {
+            System.out.println("There are more than three items in order. Applying discount");
+            total = total.subtract(DISCOUNT);
+        }
+        System.out.println("Total price is: " + total.toString());
     }
 }

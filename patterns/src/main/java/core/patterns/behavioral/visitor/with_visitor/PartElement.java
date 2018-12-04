@@ -1,5 +1,5 @@
 package core.patterns.behavioral.visitor.with_visitor;
 
-public abstract class PartElement {
-    abstract void visit(Visitor visitor);
+public interface PartElement {
+    void visit(Visitor visitor);
 }
