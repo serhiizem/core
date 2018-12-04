@@ -20,10 +20,10 @@ public class QueueTest {
 
     @Test
     public void shouldAddItemsToTheQueue() {
-        assertEquals(0, queue.getSize());
+        assertEquals(0, queue.size());
         queue.enqueue("Test item1");
         queue.enqueue("Test item2");
-        assertEquals(2, queue.getSize());
+        assertEquals(2, queue.size());
     }
 
     @Test
