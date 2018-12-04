@@ -31,7 +31,7 @@ public class Stack<T> {
         return item;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return size == 0;
     }
 

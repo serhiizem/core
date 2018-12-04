@@ -11,41 +11,38 @@ public class QuickSort implements Sort {
     }
 
     private Comparable[] quickSort(Comparable[] input, int left, int right) {
-        int index = this.partition(input, left, right);
+        int pivot = this.partition(input, left, right);
 
-        if (left < index - 1) {
-            this.quickSort(input, left, index - 1);
+        if (left < pivot - 1) {
+            this.quickSort(input, left, pivot - 1);
         }
-        if (right > index) {
-            this.quickSort(input, index, right);
+        if (right > pivot) {
+            this.quickSort(input, pivot, right);
         }
-
         return input;
     }
 
-    @SuppressWarnings("unchecked")
-    private int partition(Comparable[] input, int lowerBound, int upperBound) {
-        int first = lowerBound;
-        int last = upperBound;
-        Comparable pivot = input[(lowerBound + upperBound) / 2];
+    private int partition(Comparable[] input, int left, int right) {
 
-        while (first <= last) {
+        int i = left;
+        int j = right;
+        Comparable pivot = input[(left + right) / 2];
 
-            while (input[first].compareTo(pivot) < 0) {
-                first++;
+        while (i <= j) {
+            while (input[i].compareTo(pivot) < 0) {
+                i++;
             }
-            while (input[last].compareTo(pivot) > 0) {
-                last--;
+            while (input[j].compareTo(pivot) > 0) {
+                j--;
             }
-
-            if (first <= last) {
-                Comparable temp = input[first];
-                input[first] = input[last];
-                input[last] = temp;
-                first++;
-                last--;
+            if (i <= j) {
+                Comparable temp = input[i];
+                input[i] = input[j];
+                input[j] = temp;
+                i++;
+                j--;
             }
         }
-        return first;
+        return i;
     }
 }

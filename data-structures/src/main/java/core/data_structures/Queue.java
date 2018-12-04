@@ -12,7 +12,7 @@ public class Queue<T> implements Iterable<T> {
 
     private static class Node<E> {
         private E item;
-        public Node<E> next;
+        private Node<E> next;
     }
 
     public boolean isEmpty() {
@@ -64,13 +64,12 @@ public class Queue<T> implements Iterable<T> {
 
         @Override
         public T next() {
-            if (hasNext()) {
-                T item = first.item;
-                first = first.next;
-                return item;
-            } else {
-                throw new NoSuchElementException("There are no more element in queue");
+            if (!hasNext()) {
+                throw new NoSuchElementException("Queue is empty");
             }
+            T item = first.item;
+            first = first.next;
+            return item;
         }
 
         @Override
