@@ -1,8 +1,8 @@
 package core.data_structures;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
@@ -13,7 +13,7 @@ public class QueueTest {
 
     private Queue<String> queue;
 
-    @Before
+    @BeforeEach
     public void init() {
         queue = new Queue<>();
     }

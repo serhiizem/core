@@ -14,10 +14,11 @@ import java.math.BigDecimal;
 import static core.patterns.behavioral.visitor.without_visitor.Rear.REAR_PRICE;
 import static core.patterns.behavioral.visitor.without_visitor.Wheel.WHEEL_PRICE;
 import static core.patterns.behavioral.visitor.without_visitor.Window.WINDOW_PRICE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Visitor test")
-public class OrderVisitorTest {
+class OrderVisitorTest {
 
     private static final BigDecimal ORDER_PLAIN_TOTAL =
             REAR_PRICE.add(WHEEL_PRICE).add(WINDOW_PRICE);
@@ -28,7 +29,7 @@ public class OrderVisitorTest {
 
         @Test
         @DisplayName("No discount was added irrespective of the number of items in order")
-        public void shouldDisplayTotalPriceAsPlainSum() {
+        void shouldDisplayTotalPriceAsPlainSum() {
             PartOrder partOrder = new PartOrder();
             partOrder.addPart(new Rear());
             partOrder.addPart(new Wheel());
@@ -36,7 +37,7 @@ public class OrderVisitorTest {
 
             BigDecimal shippingOrderPrice = partOrder.calculateShipping();
 
-            assertTrue(shippingOrderPrice.equals(ORDER_PLAIN_TOTAL));
+            assertEquals(shippingOrderPrice, ORDER_PLAIN_TOTAL);
         }
     }
 
@@ -46,7 +47,7 @@ public class OrderVisitorTest {
 
         @Test
         @DisplayName("If there are more than two items in order total price should be lesser")
-        public void shouldApplyDiscountIfEligible() {
+        void shouldApplyDiscountIfEligible() {
             PartOrderElement orderElement = new PartOrderElement();
             orderElement.addPart(new RearElement());
             orderElement.addPart(new WheelElement());

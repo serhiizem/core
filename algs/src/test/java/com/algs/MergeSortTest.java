@@ -1,9 +1,9 @@
 package com.algs;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static com.algs.SortUtils.SAMPLE_INPUT_SORTED;
-import static com.algs.SortUtils.SAMPLE_INPUT_UNSORTED;
+import static com.algs.Constants.SAMPLE_INPUT_SORTED;
+import static com.algs.Constants.SAMPLE_INPUT_UNSORTED;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class MergeSortTest {
