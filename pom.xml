@@ -21,6 +21,7 @@
         <module>java9</module>
         <module>data-structures</module>
         <module>algs</module>
+        <module>concurrency</module>
     </modules>
 
     <name>practice</name>
