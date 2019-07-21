@@ -1,5 +1,6 @@
 package core.data_structures;
 
+import core.data_structures.WeightedDirectedGraph.Edge;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -37,5 +38,20 @@ class WeightedDirectedGraphTest {
         boolean hasCycles = TestData.WithNoCycles.TEST_GRAPH_1.hasCycles();
 
         assertFalse(hasCycles);
+    }
+
+    @Test
+    void shouldFindMinimumSpanningTree() {
+        List<Edge> edges = TestData.WithCycles.TEST_GRAPH_3.mstKruskal();
+
+        Edge[] correctMST = new Edge[]{
+                new Edge(0, 2, 3),
+                new Edge(1, 2, 1),
+                new Edge(1, 3, 2),
+                new Edge(3, 4, 2),
+                new Edge(4, 5, 6)
+        };
+
+        assertThat(edges, containsInAnyOrder(correctMST));
     }
 }
