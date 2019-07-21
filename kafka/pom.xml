@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>user-tracking-producer</module>
+        <module>user-tracking-consumer</module>
     </modules>
 
 
