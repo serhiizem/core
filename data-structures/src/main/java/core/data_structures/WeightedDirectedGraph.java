@@ -1,10 +1,14 @@
 package core.data_structures;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.util.*;
 
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 
 @SuppressWarnings("WeakerAccess")
@@ -24,6 +28,43 @@ public class WeightedDirectedGraph {
         vertices.get(src).add(edge);
     }
 
+    public List<Edge> mstKruskal() {
+        Deque<Edge> edges = getEdgesSortedByWeight();
+
+        Integer[] relationshipsArray = createRelationshipsArray();
+
+        List<Edge> mst = new ArrayList<>();
+
+        int index = 0;
+
+        while (index < vertices.size() - 1) {
+            Edge edge = edges.pollFirst();
+
+            if (edge != null) {
+                Integer src = edge.getSrc();
+                Integer dest = edge.getDest();
+
+                Integer parentSrc = find(relationshipsArray, src);
+                Integer parentDest = find(relationshipsArray, dest);
+
+                if (!parentSrc.equals(parentDest)) {
+                    mst.add(edge);
+                    union(relationshipsArray, parentSrc, parentDest);
+                    index++;
+                }
+            }
+        }
+
+        return mst;
+    }
+
+    private Deque<Edge> getEdgesSortedByWeight() {
+        return getAllEdges()
+                .stream()
+                .sorted(comparing(Edge::getWeight))
+                .collect(toCollection(ArrayDeque::new));
+    }
+
     public List<Integer> getAdjacentVertices(Integer vertex) {
         List<Edge> edges = vertices.get(vertex);
 
@@ -38,10 +79,7 @@ public class WeightedDirectedGraph {
     public boolean hasCycles() {
         Integer[] relationshipsArray = createRelationshipsArray();
 
-        List<Edge> allEdges = vertices.values()
-                .stream()
-                .flatMap(Collection::stream)
-                .collect(toList());
+        List<Edge> allEdges = getAllEdges();
 
         for (Edge edge : allEdges) {
             Integer src = edge.src;
@@ -58,6 +96,13 @@ public class WeightedDirectedGraph {
         }
 
         return false;
+    }
+
+    private List<Edge> getAllEdges() {
+        return vertices.values()
+                .stream()
+                .flatMap(Collection::stream)
+                .collect(toList());
     }
 
     private Integer[] createRelationshipsArray() {
@@ -85,11 +130,13 @@ public class WeightedDirectedGraph {
         relationshipsArray[destParent] = srcParent;
     }
 
+    @Getter
+    @ToString
     @EqualsAndHashCode
     @RequiredArgsConstructor
     public static class Edge {
         final Integer src;
         final Integer dest;
-        final Integer wight;
+        final Integer weight;
     }
 }
