@@ -14,6 +14,9 @@
     <modules>
         <module>user-tracking-producer</module>
         <module>user-tracking-consumer</module>
+        <module>streams</module>
+        <module>common</module>
+        <module>order-producer</module>
     </modules>
 
 
