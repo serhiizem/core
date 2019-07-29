@@ -1,4 +1,6 @@
-package core.data_structures;
+package core.data_structures.tree;
+
+import core.data_structures.stack.SequentialStack;
 
 @SuppressWarnings("StatementWithEmptyBody")
 public class QueueTreePrinter implements TreePrinter {
@@ -6,7 +8,7 @@ public class QueueTreePrinter implements TreePrinter {
     @Override
     public <Key, Value> void printTree(Tree<Key, Value> tree) {
 
-        Stack<Node<Key, Value>> nodes = new Stack<>();
+        SequentialStack<Node<Key, Value>> nodes = new SequentialStack<>();
 
         Node<Key, Value> currentNode = tree.getRoot();
 

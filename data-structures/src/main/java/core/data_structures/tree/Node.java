@@ -1,4 +1,4 @@
-package core.data_structures;
+package core.data_structures.tree;
 
 @SuppressWarnings("WeakerAccess")
 public class Node<K, V> {

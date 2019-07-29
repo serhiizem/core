@@ -1,4 +1,4 @@
-package core.data_structures;
+package core.data_structures.tree;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value>
         implements Tree<Key, Value> {
