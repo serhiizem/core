@@ -1,48 +1,93 @@
 package core.data_structures;
 
-import org.junit.jupiter.api.Assertions;
+import core.data_structures.stack.ConcurrentStack;
+import core.data_structures.stack.SequentialStack;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
-public class StackTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-    private Stack<String> stack;
+@DisplayName("Stack test")
+class StackTest {
 
-    @BeforeEach
-    public void init() {
-        stack = new Stack<>();
+    @Nested
+    @DisplayName("When sequential stack is used")
+    class SequentialStackTest {
+
+        private SequentialStack<String> stack;
+
+        @BeforeEach
+        void init() {
+            stack = new SequentialStack<>();
+        }
+
+        @Test
+        void shouldEnqueueElementToTheStack() {
+            assertEquals(0, stack.size());
+            stack.push("Test item1");
+            assertEquals(1, stack.size());
+        }
+
+        @Test
+        void shouldPopElementsFromTheStackInLifoOrder() {
+            String testItem1 = "Test item1";
+            String testItem2 = "Test item2";
+            String testItem3 = "Test item3";
+
+            stack.push(testItem1);
+            stack.push(testItem2);
+            stack.push(testItem3);
+
+            assertEquals(3, stack.size());
+
+            assertEquals(testItem3, stack.pop());
+            assertEquals(testItem2, stack.pop());
+            assertEquals(testItem1, stack.pop());
+
+            assertEquals(0, stack.size());
+        }
+
+        @Test
+        void shouldThrowExceptionIfPoppingFromEmptyStack() {
+            assertThrows(NoSuchElementException.class, () -> stack.pop());
+        }
     }
 
-    @Test
-    public void shouldEnqueueElementToTheStack() {
-        Assertions.assertEquals(0, stack.size());
-        stack.push("Test item1");
-        Assertions.assertEquals(1, stack.size());
-    }
+    @Nested
+    @DisplayName("When concurrent stack is used")
+    class ConcurrentStackTest {
 
-    @Test
-    public void shouldPopElementsFromTheStackInLifoOrder() {
-        String testItem1 = "Test item1";
-        String testItem2 = "Test item2";
-        String testItem3 = "Test item3";
+        private ConcurrentStack<String> stack = new ConcurrentStack<>();
 
-        stack.push(testItem1);
-        stack.push(testItem2);
-        stack.push(testItem3);
+        @Test
+        void shouldEnqueueElementToTheStack() {
+            assertEquals(0, stack.size());
+            stack.push("Test item1");
+            assertEquals(1, stack.size());
+        }
 
-        Assertions.assertEquals(3, stack.size());
+        @Test
+        void shouldPopElementsFromTheStackInLifoOrder() {
+            String testItem1 = "Test item1";
+            String testItem2 = "Test item2";
+            String testItem3 = "Test item3";
 
-        Assertions.assertEquals(testItem3, stack.pop());
-        Assertions.assertEquals(testItem2, stack.pop());
-        Assertions.assertEquals(testItem1, stack.pop());
+            stack.push(testItem1);
+            stack.push(testItem2);
+            stack.push(testItem3);
 
-        Assertions.assertEquals(0, stack.size());
-    }
+            assertEquals(3, stack.size());
 
-    @Test
-    public void shouldThrowExceptionIfPoppingFromEmptyStack() {
-        Assertions.assertThrows(NoSuchElementException.class, () -> stack.pop());
+            assertEquals(testItem3, stack.pop());
+            assertEquals(testItem2, stack.pop());
+            assertEquals(testItem1, stack.pop());
+
+            assertEquals(0, stack.size());
+        }
     }
 }

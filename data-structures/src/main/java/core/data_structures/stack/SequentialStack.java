@@ -1,9 +1,9 @@
-package core.data_structures;
+package core.data_structures.stack;
 
 import java.util.NoSuchElementException;
 
 @SuppressWarnings("WeakerAccess")
-public class Stack<T> {
+public class SequentialStack<T> implements Stack<T> {
 
     private Node<T> first;
     private int size;
@@ -13,6 +13,7 @@ public class Stack<T> {
         private Node<E> next;
     }
 
+    @Override
     public void push(T item) {
         Node<T> oldFirst = first;
         first = new Node<>();
@@ -21,6 +22,7 @@ public class Stack<T> {
         size++;
     }
 
+    @Override
     public T pop() {
         if (isEmpty()) {
             throw new NoSuchElementException("Stack is empty");
