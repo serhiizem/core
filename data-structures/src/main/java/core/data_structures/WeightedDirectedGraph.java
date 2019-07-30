@@ -11,6 +11,7 @@ import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 
+@Getter
 @SuppressWarnings("WeakerAccess")
 public class WeightedDirectedGraph {
 

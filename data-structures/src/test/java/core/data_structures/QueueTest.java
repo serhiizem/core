@@ -1,6 +1,5 @@
 package core.data_structures;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,17 +8,17 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class QueueTest {
+class QueueTest {
 
     private Queue<String> queue;
 
     @BeforeEach
-    public void init() {
+    void init() {
         queue = new Queue<>();
     }
 
     @Test
-    public void shouldAddItemsToTheQueue() {
+    void shouldAddItemsToTheQueue() {
         assertEquals(0, queue.size());
         queue.enqueue("Test item1");
         queue.enqueue("Test item2");
@@ -27,15 +26,15 @@ public class QueueTest {
     }
 
     @Test
-    public void shouldDequeueInsertedElement() {
+    void shouldDequeueInsertedElement() {
         String queuedElement = "Test item1";
         queue.enqueue(queuedElement);
         String dequeuedElement = queue.dequeue();
-        Assertions.assertEquals(queuedElement, dequeuedElement);
+        assertEquals(queuedElement, dequeuedElement);
     }
 
     @Test
-    public void shouldDequeueInFifoOrder() {
+    void shouldDequeueInFifoOrder() {
         String testItem1 = "Test item1";
         String testItem2 = "Test item2";
         String testItem3 = "Test item3";
@@ -50,7 +49,7 @@ public class QueueTest {
     }
 
     @Test
-    public void shouldThrowIllegalStateExceptionIfQueueIsEmpty() {
+    void shouldThrowIllegalStateExceptionIfQueueIsEmpty() {
         assertThrows(NoSuchElementException.class, () -> queue.dequeue());
     }
 }

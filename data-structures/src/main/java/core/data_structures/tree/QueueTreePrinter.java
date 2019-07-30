@@ -2,7 +2,6 @@ package core.data_structures.tree;
 
 import core.data_structures.stack.SequentialStack;
 
-@SuppressWarnings("StatementWithEmptyBody")
 public class QueueTreePrinter implements TreePrinter {
 
     @Override
