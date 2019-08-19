@@ -23,6 +23,7 @@
         <module>algs</module>
         <module>concurrency</module>
         <module>kafka</module>
+        <module>generics</module>
     </modules>
 
     <name>practice</name>
