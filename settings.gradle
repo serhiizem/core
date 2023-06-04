@@ -1,0 +1,5 @@
+rootProject.name = 'core'
+include 'coding'
+include 'data-structures'
+include 'ocp'
+

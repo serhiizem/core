@@ -1,0 +1,31 @@
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    group = 'org.core.practice'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = 17
+    targetCompatibility = 17
+
+    configurations {
+        testCompile.extendsFrom compileOnly
+    }
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.9.1')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+        testImplementation('org.assertj:assertj-core:3.24.2')
+
+        implementation 'org.projectlombok:lombok:1.18.24'
+        annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
