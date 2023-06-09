@@ -10,5 +10,6 @@
   an int** `long max = 3123456789; // DOES NOT COMPILE`
 
   
-* short is signed, which means it splits its range across the positive and negative integers. Alternatively, char is unsigned, which means its range is strictly positive, including 0
+* short is signed, which means it splits its range across the positive and negative integers. 
+Alternatively, char is unsigned, which means its range is strictly positive, including 0
 
