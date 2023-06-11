@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ComplementAndNegationTest {
 
     @Test
-    void complementOperatorTest() {
+    void complementOperator() {
         int value = 3;
 
         int complement = ~value;
@@ -18,7 +18,7 @@ class ComplementAndNegationTest {
 
     @Test
     @DisplayName("Negation operator reverses the sign of a numeric expression")
-    void negationOperatorTest() {
+    void negationOperator() {
         double temperature = 10.2;
 
         temperature = -temperature;

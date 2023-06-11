@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class IncrementAndDecrementTest {
 
     @Test
-    void testPreAndPostIncrement() {
+    void preAndPostIncrement() {
         int attendance = 5;
 
         assertThat(attendance).isEqualTo(5);
