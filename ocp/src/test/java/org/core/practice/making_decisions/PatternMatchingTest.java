@@ -1,12 +1,15 @@
 package org.core.practice.making_decisions;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.String.format;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import static org.assertj.core.api.Assertions.*;
 
-@SuppressWarnings({"StatementWithEmptyBody"})
+@SuppressWarnings({
+        "StatementWithEmptyBody", "ConstantValue",
+        "WrapperTypeMayBePrimitive", "CommentedOutCode"
+})
 class PatternMatchingTest {
 
     @Test
@@ -34,5 +37,20 @@ class PatternMatchingTest {
         if (number instanceof Long value && value.compareTo(2L) < 0) {
             // body is not needed, because evaluation is done inside if statement
         } else fail(format("Did not receive expected comparison result for %s", number));
+    }
+
+    @Test
+    @DisplayName("Pattern matching variable should be a subtype of a variable " +
+            "on the left side of the expression")
+    void shouldRequireSpecificTypeForPatternMatchingVariable() {
+        assertThatNoException().isThrownBy(() -> {
+            Integer number = 1;
+            if (number instanceof Integer) {
+            }
+
+            // DOES NOT COMPILE
+            // if (number instanceof Integer value) {
+            // }
+        });
     }
 }
